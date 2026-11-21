@@ -1,0 +1,1815 @@
+# MASTER DEVELOPMENT PROMPT — OFFLINE FLASHCARD & QUIZ ANDROID APP
+
+## PROJECT OVERVIEW
+
+Build a complete Android application for studying, memorizing, revising, and testing knowledge using Flashcards and Multiple Choice Quizzes.
+
+The application must provide four methods of creating Flashcards:
+
+1. Manual Question–Answer Creation
+2. Automatic Flashcard Generation from Images / Photos
+3. Bulk Flashcard Import using JSON / CSV Files
+4. Automatic Flashcard Generation from PDF Notes / Books
+
+The application must be completely offline. All data, processing, learning progress, quizzes, statistics, imports, OCR, and backup operations must work locally on the Android device.
+
+The application must be a functional Android app, not merely a UI prototype.
+
+---
+
+# SECTION 1 — STRICT DEVELOPMENT RULES
+
+Follow all instructions exactly.
+
+- Build a proper Android application.
+- Do not build a website, web dashboard, or browser-only application.
+- The application must function without internet access.
+- No login or registration.
+- No server.
+- No cloud database.
+- No cloud synchronization.
+- No online API.
+- No advertisements.
+- No subscriptions.
+- No unnecessary permissions.
+- No unnecessary features.
+- No unnecessary onboarding screens.
+- No fake functionality.
+- No dummy buttons.
+- No placeholder screens.
+- No sample data in the production app.
+- No invented statistics.
+- No unrequested features.
+
+Every button, menu, card, screen, graph, import function, filter, navigation action, and database operation must be functional.
+
+Do not omit any feature described in this document.
+
+Do not simplify the requirements just to make implementation easier.
+
+All data must remain available after app closing, app restarting, or phone restarting.
+
+Use a modular architecture. Features must be easy to modify independently without breaking other modules.
+
+---
+
+# SECTION 2 — APP UI & DESIGN SYSTEM
+
+Create a premium, modern, minimal, professional Android study application.
+
+## UI Design Requirements
+
+- Clean Material-style Android UI.
+- Modern card-based layouts.
+- Rounded corners.
+- Consistent padding and spacing.
+- Professional typography.
+- Clear visual hierarchy.
+- Smooth transitions and subtle animations.
+- High readability.
+- Responsive layout for different screen sizes.
+- Proper scrolling.
+- No overlapping elements.
+- No clipped text.
+- No unnecessarily large empty spaces.
+- Avoid excessive decoration.
+- Use consistent icons.
+- Maintain consistent UI across all screens.
+
+## Theme System
+
+Support exactly three appearance settings:
+
+- Light Mode
+- Dark Mode
+- System Default
+
+All application screens must adapt correctly to the selected theme.
+
+## Main Navigation
+
+Create exactly four bottom navigation tabs:
+
+1. Home
+2. Decks
+3. Study
+4. Quiz
+
+Do not add any additional bottom navigation tabs.
+
+Settings must be accessible through a settings icon on the Home screen.
+
+Weak Cards, Search, and Statistics must be accessible through the Home screen or relevant Deck screens without adding extra bottom navigation tabs.
+
+---
+
+# MODULE 1 — HOME DASHBOARD
+
+Create a simple, useful dashboard.
+
+## Top Section
+
+- App Name
+- App Icon
+- Settings Icon
+
+## Statistics Summary
+
+Display:
+
+- Total Decks
+- Total Flashcards
+- Remembered Cards
+- Forgotten Cards
+
+Calculate all values using actual local database records.
+
+## My Decks Section
+
+Show recently used or existing decks.
+
+Each deck card must display:
+
+- Deck Name
+- Total Cards
+- Remembered Cards
+- Learning Progress Percentage
+
+Clicking a deck opens its Deck Details screen.
+
+## Quick Actions
+
+Provide:
+
+- Create Deck
+- Start Studying
+- Start Quiz
+
+## Additional Home Access
+
+Provide access to:
+
+- Weak Cards
+- Search
+- Statistics
+
+Keep these as simple navigation options. Do not add extra features.
+
+## Logic
+
+- Create Deck opens deck creation.
+- Start Studying opens deck selection and then Study Mode.
+- Start Quiz opens deck selection and then Quiz Setup.
+- All dashboard statistics update automatically.
+- All information must come from actual user data.
+
+---
+
+# MODULE 2 — DECK MANAGEMENT
+
+Organize Flashcards into separate Decks based on subjects or topics.
+
+Examples:
+
+- Indian Polity
+- Geography
+- History
+- Biology
+- English Vocabulary
+
+## Deck List Screen
+
+Display all user-created Decks.
+
+Each deck card must display:
+
+- Deck Name
+- Total Flashcards
+- Remembered Cards
+- Forgotten Cards
+- Progress Percentage
+
+## Deck Operations
+
+Allow:
+
+- Create Deck
+- Edit Deck Name
+- Delete Deck
+- Open Deck
+- View Cards
+
+## Create Deck Screen
+
+Include:
+
+- Deck Name Input
+- Create Button
+- Cancel Button
+
+## Deck Details Screen
+
+Display:
+
+- Deck Name
+- Total Cards
+- Remembered Cards
+- Forgotten Cards
+- Unstudied Cards
+- Progress Bar
+
+Provide the following actions:
+
+- Study This Deck
+- Quiz This Deck
+- Add Flashcard
+- Create Cards from Image
+- Import Flashcards from File
+- Create Cards from PDF
+- View Cards
+
+## Card List
+
+Display cards belonging to the selected Deck.
+
+Each item must show:
+
+- Front Text
+- Back Text Preview
+
+Allow:
+
+- Open Card
+- Edit Card
+- Delete Card
+- Reorder Cards
+
+## Deck Deletion
+
+- Ask for confirmation.
+- Delete associated cards, weak status, and card progress.
+- Prevent accidental deletion.
+- Update all statistics immediately.
+
+---
+
+# MODULE 3 — MANUAL FLASHCARD CREATION
+
+Every Flashcard must contain exactly two fields:
+
+## Front
+
+Question, keyword, term, topic, or statement.
+
+## Back
+
+Answer, explanation, definition, or information.
+
+## Create Card Screen
+
+Provide:
+
+- Front Text Area
+- Back Text Area
+- Save Card
+- Cancel
+
+Both fields must support multiline text.
+
+## Card Operations
+
+Allow:
+
+- Create
+- Edit
+- Delete
+- View
+- Reorder
+
+## Validation
+
+- Front cannot be empty.
+- Back cannot be empty.
+- Show validation messages.
+- Save permanently in local database.
+- Update Deck counts immediately.
+- New cards must start with Unstudied status.
+
+Do not add image cards, audio cards, or other card types.
+
+---
+
+# MODULE 4 — FLASHCARD STUDY MODE
+
+Create a distraction-free Flashcard Study experience.
+
+## Study Screen UI
+
+Top:
+
+- Deck Name
+- Card Number / Total Cards
+- Progress Bar
+- Close Button
+
+Center:
+
+- Large Flashcard
+- Front Text
+- Tap to Reveal instruction
+
+Bottom:
+
+- Previous
+- Remembered
+- Forgot
+- Next
+
+## Card Flip
+
+- Tap card to reveal Back.
+- Tap again to return to Front.
+- Smooth flip animation.
+- Correct text alignment.
+- Support long text.
+- Use scrolling when needed.
+
+## Navigation
+
+- Previous Card.
+- Next Card.
+- Swipe left and right.
+- No navigation beyond boundaries.
+- Reset to Front when moving to a new card.
+- Correct card number display.
+
+## Remembered / Forgot
+
+Remembered:
+
+- Mark card Remembered.
+- Update learning status.
+- Update progress.
+
+Forgot:
+
+- Mark card Forgotten.
+- Add card to Weak Cards.
+- Update progress.
+
+Users must be able to change the status later.
+
+## Shuffle
+
+- Shuffle ON randomizes current study session.
+- Shuffle OFF uses original order.
+- Never permanently reorder the Deck.
+- Allow return to original sequence.
+
+## Study Session
+
+- Preserve learning status when exiting.
+- Do not reset statuses on new sessions.
+- Allow studying from any card.
+- On completion, show a simple completion screen.
+- Provide Restart and Back to Deck actions.
+
+---
+
+# MODULE 5 — QUIZ MODE
+
+Create a Multiple Choice Quiz from existing Flashcards.
+
+Do not create a separate question database.
+
+## Quiz Setup
+
+### Deck Selection
+
+Allow selecting a Deck.
+
+Only eligible cards should be used.
+
+### Question Count
+
+Provide exactly:
+
+- 5 Questions
+- 10 Questions
+- 20 Questions
+- All Questions
+
+If fewer eligible questions exist, use only those available.
+
+## MCQ GENERATION LOGIC
+
+For each question:
+
+- Front = Question
+- Back = Correct Answer
+
+Generate options using the following rules:
+
+1. Select one Flashcard as the Question.
+2. Use its Front as the Question.
+3. Use its Back as the Correct Answer.
+4. Select three other different Flashcard answers from the same Deck as Distractors.
+5. Combine four options.
+6. Shuffle option positions.
+
+## Rules
+
+- Correct answer must always be present.
+- Do not duplicate options.
+- Do not repeat the same Question in one Quiz.
+- Do not use the Question Card itself as a Distractor.
+- Use four unique options whenever possible.
+- If four unique options cannot be created, exclude that question.
+- Never invent fake answers to fill options.
+
+## Quiz Screen
+
+Display:
+
+- Deck Name
+- Question Number / Total Questions
+- Progress Bar
+- Question Text
+- Four Answer Options
+- Next Button
+- Exit Quiz Button
+
+## Answer UI
+
+- Four large clickable option cards.
+- Clearly highlight the selected option.
+
+## Answer Logic
+
+After selecting an answer:
+
+- Lock the answer.
+- Correct answer turns Green.
+- Wrong selected answer turns Red.
+- Correct answer must also be shown in Green.
+- Show Correct or Incorrect.
+- Show correct answer after a wrong selection.
+- Prevent changing the answer.
+- Enable Next only after answer selection.
+
+## Quiz Navigation
+
+- Next Question.
+- Exit Quiz confirmation.
+- Do not count an incomplete Quiz in completed quiz statistics.
+- No repeated questions within the same Quiz.
+
+---
+
+# MODULE 6 — QUIZ RESULT
+
+After completing a Quiz, display a Result Screen.
+
+## Result UI
+
+Display:
+
+- Total Questions
+- Correct Answers
+- Wrong Answers
+- Accuracy Percentage
+- Score
+
+Example:
+
+10 Questions
+
+8 Correct
+
+2 Wrong
+
+80% Accuracy
+
+## Actions
+
+### Retry Quiz
+
+Restart the same Quiz configuration.
+
+- Generate fresh Question order.
+- Shuffle answer options again.
+
+### Review Wrong Answers
+
+Display:
+
+- Question
+- User's Selected Wrong Answer
+- Correct Answer
+
+### Back to Deck
+
+Return to selected Deck Details.
+
+## Logic
+
+- Calculate actual results.
+- Accuracy = Correct Answers ÷ Attempted Questions × 100.
+- Save completed Quiz result locally.
+- Update Quiz Statistics.
+
+---
+
+# MODULE 7 — WEAK CARDS
+
+Automatically identify cards that need more revision.
+
+## Weak Card Conditions
+
+A card becomes Weak when:
+
+- Marked Forgotten in Study Mode.
+- Answered Incorrectly in a completed Quiz.
+
+## Weak Cards Screen
+
+Display:
+
+- Front
+- Back Preview
+- Deck Name
+- Weak Reason
+
+Allow:
+
+- Study Weak Cards
+- Open Card
+- Remove Weak Status
+
+## Logic
+
+- Link Weak Cards to original Flashcards.
+- Do not duplicate entries.
+- Repeated wrong answers update existing weak status.
+- Remove Weak Status removes it from the list.
+- If it becomes weak again, it may reappear.
+- Deleted original cards must disappear automatically.
+
+## Weak Card Study
+
+- Study only Weak Cards.
+- Use existing Study UI.
+- Remembered and Forgot actions must work.
+- Allow returning to Weak Cards screen.
+
+---
+
+# MODULE 8 — SEARCH & FILTER
+
+Implement simple and fast Search.
+
+## Deck Search
+
+Search Decks by name.
+
+## Card Search
+
+Search Front and Back text.
+
+Display:
+
+- Front
+- Back Preview
+- Deck Name
+
+Clicking a result opens the Card.
+
+## Filters
+
+Exactly these filters:
+
+- All Cards
+- Remembered
+- Forgotten
+- Unstudied
+- Weak Cards
+
+## Logic
+
+- Filters must use actual statuses.
+- Search and filters must work together.
+- Clearing Search restores filtered results.
+- No advanced filters.
+
+---
+
+# MODULE 9 — PROGRESS & STATISTICS
+
+Create a Statistics screen accessible from Home.
+
+All statistics must use actual stored data.
+
+## A. Deck Progress
+
+For each Deck display:
+
+- Total Cards
+- Remembered
+- Forgotten
+- Unstudied
+- Learning Progress Percentage
+
+Calculation:
+
+Remembered Cards ÷ Total Cards × 100
+
+Empty Deck = 0%.
+
+## B. Quiz Statistics
+
+Display:
+
+- Total Completed Quizzes
+- Highest Score
+- Average Score
+- Last Quiz Score
+
+Update automatically after completed Quizzes.
+
+## C. Graphs
+
+Include exactly two graphs.
+
+### Daily Study Activity Graph
+
+- Number of Cards Studied per Day.
+- Use actual locally stored study activity.
+- Display recent daily activity.
+
+### Quiz Score History Graph
+
+- Quiz scores over time.
+- Actual completed Quiz history.
+- Score percentage.
+
+Graphs must be readable and simple.
+
+Do not add rankings, predictions, comparisons, or extra analytics.
+
+---
+
+# MODULE 10 — SETTINGS & BACKUP
+
+Create a simple Settings screen.
+
+## A. Appearance
+
+Exactly:
+
+- Light Mode
+- Dark Mode
+- System Default
+
+Apply changes immediately.
+
+## B. Study Settings
+
+### Default Shuffle
+
+ON / OFF
+
+Used as default in Study Mode.
+
+### Default Quiz Questions
+
+- 5
+- 10
+- 20
+- All
+
+Used as default in Quiz Setup but changeable before starting.
+
+## C. LOCAL BACKUP
+
+### Export Backup
+
+Export:
+
+- Decks
+- Flashcards
+- Original Card Order
+- Learning Statuses
+- Weak Card Statuses
+- Quiz History
+- Study Activity
+- Settings
+- Relevant source metadata of imported/generated cards
+
+Save a backup file locally.
+
+### Restore Backup
+
+- Select backup file.
+- Validate file.
+- Ask for confirmation.
+- Restore all supported data.
+- Replace existing data only after confirmation.
+- Do not partially overwrite existing data if the backup is invalid.
+
+Must work offline.
+
+## D. CLEAR ALL DATA
+
+- Confirmation dialog.
+- Explain that all Decks, Cards, Progress, Quiz History, and Settings-related data will be deleted.
+- Delete only after explicit confirmation.
+
+---
+
+# MODULE 11 — IMAGE / PHOTO TO AUTOMATIC FLASHCARDS
+
+Create Flashcards automatically from book pages, notes, printed study material, and photographs.
+
+## ENTRY POINT
+
+Inside Deck Details and Add Flashcard, provide:
+
+Create Cards from Image
+
+## IMAGE SOURCE
+
+Provide:
+
+- Take Photo
+- Choose from Gallery
+
+Use native Android camera and photo selection capabilities.
+
+## IMAGE PREVIEW
+
+Display selected image.
+
+Allow:
+
+- Crop
+- Rotate
+- Select relevant region when supported
+- Confirm Image
+- Process Image
+
+## OFFLINE OCR
+
+Use On-device OCR.
+
+Requirements:
+
+- Printed text support.
+- Hindi support wherever the selected offline OCR engine supports it.
+- English support.
+- Mixed Hindi and English text where supported.
+- Preserve numbers, dates, names, and terminology.
+- Do not upload images.
+- Do not require internet.
+
+The OCR model must be available locally. Do not depend on downloading a recognition model at first use.
+
+## EXTRACTED TEXT PREVIEW
+
+After OCR:
+
+- Display extracted text.
+- Allow text editing.
+- Regenerate Cards after editing.
+- Reprocess Image if needed.
+- Display message when no readable text is detected.
+
+## AUTOMATIC CARD GENERATION
+
+Generate Flashcards using only extracted text.
+
+Rules:
+
+- Identify meaningful facts and definitions.
+- Identify dates, events, terms, names, numerical facts, and short explanations.
+- Generate concise Questions.
+- Generate accurate Answers.
+- Use only the source text.
+- Do not invent facts.
+- Do not add outside knowledge.
+- Do not change numbers, names, dates, or qualifiers.
+- Avoid duplicate Questions.
+- Avoid repetitive Cards.
+- Do not generate Cards from incomplete or unreadable content.
+- Maintain original language.
+- Hindi source = Hindi Cards.
+- English source = English Cards.
+- Mixed source = preserve terminology appropriately.
+
+Because the app is offline, use a conservative rule-based local generation system or an on-device model only if a suitable model is bundled and can run locally.
+
+Do not pretend rule-based processing has the reasoning capability of an online AI.
+
+If accurate generation is not possible, generate fewer Cards and mark uncertain Cards as Needs Review.
+
+## GENERATED CARD PREVIEW
+
+Display each Card with:
+
+- Front
+- Back
+- Edit
+- Delete
+- Select / Deselect
+- Quality Status
+
+Provide:
+
+- Total Generated
+- Verified
+- Needs Review
+- Rejected
+- Select All
+- Deselect All
+- Save Selected
+- Cancel
+
+Do not save automatically.
+
+## SAVE LOGIC
+
+- Save to currently selected Deck.
+- Only selected valid Cards are saved.
+- New Cards start Unstudied.
+- Update Deck counts.
+- Integrate with Study, Quiz, Search, Weak Cards, Statistics, and Backup.
+
+---
+
+# MODULE 12 — JSON / CSV BULK FLASHCARD IMPORT
+
+Allow bulk importing Flashcards created using ChatGPT, Gemini, other AI tools, or manually created files.
+
+## ENTRY POINT
+
+Inside Deck Details and Add Flashcard:
+
+Import Flashcards from File
+
+## SUPPORTED FILE FORMATS
+
+Exactly:
+
+1. JSON (.json)
+2. CSV (.csv)
+
+No additional import formats.
+
+## JSON STRUCTURE
+
+Support:
+
+{
+  "cards": [
+    {
+      "front": "Question text",
+      "back": "Answer text"
+    },
+    {
+      "front": "Question text",
+      "back": "Answer text"
+    }
+  ]
+}
+
+Requirements:
+
+- Read cards array.
+- Read front as Question.
+- Read back as Answer.
+- Support multiple Cards.
+- Support Unicode.
+- Support Hindi.
+- Support English.
+- Support multiline content.
+- Ignore unknown fields.
+- Validate structure.
+- Handle invalid JSON without crashing.
+
+## CSV STRUCTURE
+
+Support:
+
+front,back
+
+Example:
+
+front,back
+"Question 1","Answer 1"
+"Question 2","Answer 2"
+
+Requirements:
+
+- Front and Back columns.
+- Column names case-insensitive.
+- Columns may be in any order.
+- Support commas inside quoted text.
+- Support multiline quoted fields.
+- Support Unicode.
+- Support Hindi and English.
+- UTF-8.
+- Handle missing columns.
+- Handle malformed CSV safely.
+
+## FILE PICKER
+
+- Native Android document picker.
+- Select JSON or CSV.
+- Read file locally.
+- No upload.
+- No unnecessary storage permission.
+
+## IMPORT PREVIEW
+
+Display:
+
+- Total Cards Found
+- Valid Cards
+- Invalid Cards
+- Duplicate Cards
+
+Each Card:
+
+- Front
+- Back
+- Edit
+- Delete
+- Select / Deselect
+
+Provide:
+
+- Select All
+- Deselect All
+- Import Selected
+- Cancel
+
+## VALIDATION
+
+- Front cannot be empty.
+- Back cannot be empty.
+- Validate structure.
+- Identify duplicate Questions/Cards.
+- Do not silently change user-provided facts.
+- Invalid Cards must be excluded until corrected.
+
+## DUPLICATE DETECTION
+
+Compare normalized Front and Back.
+
+Normalization:
+
+- Trim leading/trailing whitespace.
+- Case-insensitive English comparison.
+- Avoid accidental duplicates within imported file.
+- Check existing Cards in selected Deck.
+
+Provide:
+
+Skip Duplicate Cards
+
+Enabled by default.
+
+Do not delete or modify existing Cards.
+
+## IMPORT LOGIC
+
+- Save selected valid Cards in currently selected Deck.
+- Preserve existing Cards.
+- New Cards = Unstudied.
+- Update counts.
+- Make Cards immediately available in Study and Quiz.
+- Integrate with Search, Weak Cards, Statistics, Backup.
+- Avoid repeated duplicate insertion.
+- Handle large imports without freezing the UI.
+
+## IMPORT COMPLETION
+
+Display:
+
+- Successfully Imported
+- Skipped Duplicates
+- Invalid Cards Skipped
+
+Provide:
+
+Back to Deck
+
+---
+
+# MODULE 13 — PDF NOTES TO AUTOMATIC FLASHCARDS
+
+Create a complete offline PDF-to-Flashcard generation system.
+
+## ENTRY POINT
+
+Inside Deck Details and Add Flashcard:
+
+Create Cards from PDF
+
+## PDF SELECTION
+
+Use native Android document picker.
+
+Allow selecting a PDF from local storage or supported local document providers.
+
+## PDF PREVIEW
+
+Display:
+
+- PDF File Name
+- Page Preview
+- Total Pages
+- Page Navigation
+- Select Pages
+- Process PDF
+
+Allow:
+
+- Select All Pages
+- Select Specific Pages
+- Select Page Range, e.g. 2–10
+
+Process only selected pages.
+
+## PDF TEXT EXTRACTION
+
+Implement offline extraction.
+
+### Text-based PDF
+
+Extract embedded text using an offline PDF library.
+
+### Scanned PDF
+
+- Render selected pages locally.
+- Use offline OCR.
+- Extract text from rendered page images.
+- Never upload PDF pages.
+
+Support Hindi and English where extraction/OCR technology permits.
+
+## EXTRACTED TEXT PREVIEW
+
+Before generating Cards:
+
+- Display page number.
+- Display extracted text.
+- Display extraction status.
+- Allow editing extracted text.
+- Allow excluding pages.
+- Allow reprocessing pages.
+- Continue to generation.
+
+Maintain page-wise text separation.
+
+## AUTOMATIC CARD GENERATION
+
+Generate Cards from extracted PDF text only.
+
+Rules:
+
+- Use facts explicitly supported by the source.
+- Do not invent information.
+- Do not use outside knowledge.
+- Preserve dates, numbers, names, definitions, and terminology.
+- Create concise Questions.
+- Create accurate Answers.
+- Avoid duplicate Cards.
+- Avoid meaningless Questions.
+- Avoid incomplete sentences.
+- Avoid unreliable OCR text.
+- Do not force generation from unclear content.
+- Preserve source language.
+- Hindi text = Hindi Cards.
+- English text = English Cards.
+- Mixed language = appropriate mixed terminology.
+
+Generate only:
+
+- Definitions
+- Important facts
+- Dates
+- Events
+- Names
+- Constitutional Articles
+- Books and Authors
+- Places
+- Scientific concepts
+- Causes and consequences
+- Differences
+- Comparisons
+- Numerical facts
+- Short explanations
+
+No additional Card types.
+
+## SOURCE TRACEABILITY
+
+Each generated Card must retain internal source metadata:
+
+- PDF File Name
+- Source Page Number
+- Relevant Source Text Excerpt
+
+Show source information in Preview for verification.
+
+Source information must not be added to Front or Back text.
+
+## QUALITY VALIDATION
+
+Run local validation on every generated Card.
+
+Check:
+
+- Empty Question
+- Empty Answer
+- Duplicate Questions
+- Duplicate Cards
+- Repeated Facts
+- Unsupported Question
+- Unsupported Answer
+- Changed Names
+- Changed Dates
+- Changed Numbers
+- Missing Qualifiers
+- OCR Errors
+- Incomplete Content
+- Unclear Meaning
+- Question–Answer Mismatch
+
+Assign one of exactly three statuses:
+
+### Verified Against Source
+
+Use only if the source directly supports the Question and Answer and validation checks pass.
+
+### Needs Review
+
+Use if:
+
+- OCR confidence is low.
+- Source text is unclear.
+- Answer may be incomplete.
+- Question wording may change the original meaning.
+- Multiple interpretations are possible.
+- Validation cannot confidently verify the content.
+
+### Rejected
+
+Use if:
+
+- No reliable source exists.
+- Answer is unsupported or contradictory.
+- Content is unreadable.
+- Card is meaningless.
+- Card is incomplete.
+- Card is a duplicate.
+
+## GENERATED CARD PREVIEW
+
+Each Card:
+
+- Front
+- Back
+- Source Page
+- Source Excerpt
+- Quality Status
+- Edit
+- Delete
+- Select / Deselect
+
+Display:
+
+- Total Generated
+- Verified
+- Needs Review
+- Rejected
+
+Actions:
+
+- Select All Verified
+- Select All
+- Deselect All
+- Import Selected
+- Cancel
+
+Rejected Cards must not be imported unless corrected and revalidated.
+
+Do not save Cards automatically.
+
+## IMPORT LOGIC
+
+- Save selected valid Cards to the currently selected Deck.
+- Set new Cards to Unstudied.
+- Preserve existing Cards.
+- Do not create a new Deck.
+- Do not overwrite existing Cards.
+- Prevent duplicate insertion.
+- Update Card Count.
+- Integrate with Study, Quiz, Search, Weak Cards, Statistics, and Backup.
+
+## LARGE PDF PERFORMANCE
+
+- Process pages in manageable batches.
+- Do not load all pages as large images simultaneously.
+- Show progress.
+- Show current page.
+- Allow cancellation.
+- Release temporary resources.
+- Avoid crashes.
+- Do not permanently store unnecessary rendered images.
+
+## ERROR HANDLING
+
+Handle:
+
+- Corrupted PDFs.
+- Password-protected PDFs.
+- Empty PDFs.
+- PDFs with no readable text.
+- OCR failures.
+- Unreadable pages.
+- Unsupported structures.
+- Very large PDFs.
+- Insufficient storage.
+- Cancellation.
+- Invalid page selection.
+
+Show understandable error messages.
+
+Do not crash.
+
+---
+
+# SECTION 14 — GLOBAL FLASHCARD ACCURACY & VALIDATION
+
+This rule applies to all Card creation and import methods.
+
+## Manual Cards
+
+- Validate Front and Back.
+- Do not allow empty fields.
+- Do not modify user-written text silently.
+
+## Image Cards
+
+- Validate OCR text.
+- Preserve source information where possible.
+- Identify low-confidence text.
+- Do not silently invent missing words.
+
+## PDF Cards
+
+- Validate against extracted source text.
+- Preserve page references.
+- Identify unsupported or uncertain content.
+- Do not claim complete accuracy.
+
+## JSON / CSV Cards
+
+- Validate file structure.
+- Validate required fields.
+- Identify empty fields and duplicates.
+- Do not silently rewrite imported facts.
+
+## UNIVERSAL RULES
+
+- Never invent answers.
+- Never silently change source facts.
+- Never alter dates or numerical values without user approval.
+- Never mark uncertain content as verified.
+- Detect duplicates.
+- Detect mismatched Questions and Answers wherever possible.
+- Detect unsupported information wherever source material is available.
+- Detect incomplete content.
+- Allow editing before import.
+- Allow deleting before import.
+- Invalid Cards must not be silently imported.
+- Inform the user about skipped Cards and the reason.
+- User must control final Card selection and saving.
+
+Accuracy is more important than the quantity of generated Cards.
+
+100% error-free automatic generation cannot be guaranteed. The app must never falsely claim that a Card is error-free simply because automated validation passed.
+
+For Image and PDF generation, source verification and human review must remain available.
+
+For JSON and CSV, validate structure and data integrity without falsely claiming factual verification of unsourced content.
+
+---
+
+# SECTION 15 — OFFLINE DATABASE & DATA STRUCTURE
+
+Use a reliable local database. Prefer Room + SQLite if implementing native Android architecture.
+
+## Deck Entity
+
+- Deck ID
+- Deck Name
+- Creation Date
+- Updated Date
+
+## Flashcard Entity
+
+- Card ID
+- Deck ID
+- Front
+- Back
+- Original Order
+- Learning Status
+- Creation Date
+- Updated Date
+
+## Learning Status
+
+Exactly:
+
+- Unstudied
+- Remembered
+- Forgotten
+
+## Weak Card Entity
+
+- Card ID
+- Weak Status
+- Reason
+- Updated Date
+
+## Quiz History Entity
+
+- Quiz ID
+- Deck ID
+- Total Questions
+- Correct Answers
+- Wrong Answers
+- Score Percentage
+- Completion Date
+
+## Study Activity
+
+- Date
+- Cards Studied
+- Deck ID when required
+
+## Settings
+
+- Theme
+- Default Shuffle
+- Default Quiz Question Count
+
+## Source Metadata
+
+For image and PDF generated Cards, where applicable:
+
+- Source Type
+- Source Name
+- Source Page Number
+- Source Excerpt
+
+For imported Cards, where applicable:
+
+- Import Source Type
+- Original File Name
+
+Source metadata must not unnecessarily clutter Front or Back.
+
+## Persistence
+
+Data must persist after:
+
+- App closing
+- App restart
+- Phone restart
+
+Do not use memory-only storage.
+
+---
+
+# SECTION 16 — BACKUP & RESTORE COMPATIBILITY
+
+Backup must include all data required to restore the app correctly:
+
+- Decks
+- Flashcards
+- Original Card Order
+- Learning Status
+- Weak Card Status
+- Quiz History
+- Study Activity
+- Settings
+- Source Metadata
+
+Backup and Restore must work offline.
+
+Importing new Cards must not break existing backup functionality.
+
+Restoring backup must restore Card source information wherever supported.
+
+---
+
+# SECTION 17 — APP NAVIGATION & SCREEN STRUCTURE
+
+## HOME
+
+- Dashboard
+- Statistics Summary
+- Deck Overview
+- Create Deck
+- Start Study
+- Start Quiz
+- Weak Cards
+- Search
+- Statistics
+- Settings
+
+## DECKS
+
+- Deck List
+- Create Deck
+- Edit Deck
+- Deck Details
+- Card List
+- Create Card
+- Edit Card
+- Card Viewer
+- Create Cards from Image
+- Import Flashcards from File
+- Create Cards from PDF
+
+## STUDY
+
+- Deck Selection
+- Study Session
+- Study Completion
+
+## QUIZ
+
+- Deck Selection
+- Quiz Setup
+- Quiz Session
+- Quiz Result
+- Wrong Answer Review
+
+## WEAK CARDS
+
+- Weak Cards List
+- Weak Card Study
+
+## SEARCH
+
+- Deck Search
+- Card Search
+- Filtered Results
+
+## STATISTICS
+
+- Deck-wise Progress
+- Quiz Performance
+- Daily Study Activity Graph
+- Quiz Score History Graph
+
+## SETTINGS
+
+- Theme
+- Default Shuffle
+- Default Quiz Question Count
+- Export Backup
+- Restore Backup
+- Clear All Data
+
+Navigation must be consistent.
+
+Back button must not accidentally erase study sessions or Quiz progress.
+
+Do not add new navigation tabs.
+
+---
+
+# SECTION 18 — MODULAR CODE ARCHITECTURE
+
+Maintain a clean and modular architecture.
+
+Suggested modules:
+
+- app
+- navigation
+- database
+- models
+- repositories
+- home
+- decks
+- flashcards
+- study
+- quiz
+- weakcards
+- search
+- statistics
+- settings
+- backup
+- image_import
+- file_import
+- pdf_import
+- ocr
+- card_validation
+- common_components
+- theme
+
+## Architecture Rules
+
+- UI must remain separate from Database.
+- Database must remain separate from Business Logic.
+- Quiz Logic must be independent from Study Logic.
+- OCR must be independent from UI.
+- PDF processing must be independent from UI.
+- Import parsing must be independent from UI.
+- Validation must be reusable.
+- Statistics calculations must be reusable.
+- Navigation must be centrally managed.
+- Backup logic must be separate.
+- Reuse components.
+- Avoid giant files.
+- Avoid duplicate logic.
+- Use clear naming.
+- Make individual modules easy to update.
+
+Do not modify unrelated modules when fixing or updating one feature.
+
+---
+
+# SECTION 19 — FUNCTIONAL TESTING
+
+Test the complete application before declaring it finished.
+
+## Deck Testing
+
+- Create Deck
+- Rename Deck
+- Delete Deck
+- Open Deck
+- Counts Update
+
+## Manual Card Testing
+
+- Create
+- Edit
+- Delete
+- Reorder
+- Empty Field Validation
+- Persistence
+
+## Study Testing
+
+- Flip
+- Previous / Next
+- Swipe
+- Shuffle
+- Remembered
+- Forgotten
+- Status Change
+- Restart Persistence
+
+## Quiz Testing
+
+- Question Generation
+- Correct Answer
+- Four Unique Options
+- No Question Repetition
+- Random Options
+- Correct Feedback
+- Incorrect Feedback
+- Score
+- Completion
+- Exit Confirmation
+- Retry
+- Wrong Answer Review
+
+## Weak Cards Testing
+
+- Forgotten Cards Added
+- Quiz Incorrect Cards Added
+- Duplicate Prevention
+- Remove Weak Status
+- Reappearance
+- Deleted Card Removal
+
+## Search Testing
+
+- Deck Search
+- Front Search
+- Back Search
+- All Filters
+- Search + Filter Combination
+
+## Statistics Testing
+
+- Deck Progress
+- Remembered Count
+- Forgotten Count
+- Unstudied Count
+- Highest Quiz Score
+- Average Quiz Score
+- Last Quiz Score
+- Daily Study Graph
+- Quiz History Graph
+
+## IMAGE TESTING
+
+- Camera
+- Gallery
+- Image Preview
+- Crop
+- Rotate
+- OCR
+- Hindi Text
+- English Text
+- Extracted Text Editing
+- Card Generation
+- Preview
+- Editing
+- Selection
+- Import
+
+## JSON / CSV TESTING
+
+- Valid JSON
+- Invalid JSON
+- Valid CSV
+- Invalid CSV
+- Missing Fields
+- Empty Fields
+- Multiline Fields
+- Unicode
+- Hindi
+- English
+- Duplicate Detection
+- Existing Deck Duplicate Detection
+- Preview
+- Edit
+- Delete
+- Selection
+- Import
+- Cancel
+
+## PDF TESTING
+
+- Text-Based PDF
+- Scanned PDF
+- Hindi
+- English
+- Mixed Language
+- Page Selection
+- Page Range
+- OCR
+- Text Extraction
+- Text Editing
+- Card Generation
+- Source Page Tracking
+- Source Excerpt
+- Validation
+- Preview
+- Editing
+- Selection
+- Import
+- Cancel
+- Corrupted PDF
+- Unreadable Pages
+- Empty PDF
+- Large PDF
+
+## OFFLINE TESTING
+
+Disable internet and verify:
+
+- Every Screen
+- Database
+- Study
+- Quiz
+- Search
+- Statistics
+- Image OCR
+- JSON Import
+- CSV Import
+- PDF Extraction
+- PDF OCR
+- Card Generation
+- Backup
+- Restore
+
+Everything must work offline.
+
+## BACKUP TESTING
+
+- Export
+- Restore
+- Invalid Backup
+- Cancel Restore
+- Existing Data
+- Restored Card Status
+- Restored Quiz History
+- Restored Settings
+- Restored Source Metadata
+
+---
+
+# SECTION 20 — STRICT SCOPE LOCK
+
+The application must contain only the features specified in this prompt.
+
+Do not add:
+
+- Login
+- Registration
+- Cloud Sync
+- AI Chat
+- Online AI Generation
+- Internet APIs
+- Social Features
+- Leaderboards
+- Streaks
+- Daily Challenges
+- Notifications
+- Rewards
+- Coins
+- Gamification
+- Ads
+- Subscriptions
+- Audio Cards
+- Image Cards as a separate card type
+- Extra Quiz Types
+- Extra Analytics
+- Predictions
+- Unnecessary Onboarding
+- Extra Navigation Tabs
+- Unrequested Settings
+- Unrequested Features
+
+Do not remove, simplify, or skip any required feature.
+
+---
+
+# SECTION 21 — FINAL IMPLEMENTATION REQUIREMENTS
+
+Build the complete Android application.
+
+Do not stop after creating a UI prototype.
+
+Implement:
+
+- All Screens
+- All Navigation
+- All Buttons
+- All Dialogs
+- All Database Operations
+- All Calculations
+- Study Logic
+- Quiz Logic
+- Weak Card Logic
+- Search
+- Statistics
+- Graphs
+- OCR
+- Image Processing
+- JSON Import
+- CSV Import
+- PDF Processing
+- PDF OCR
+- Card Validation
+- Source Traceability
+- Backup
+- Restore
+- Settings
+- Offline Persistence
+
+Use offline libraries and bundled models where required.
+
+Do not depend on downloading OCR or AI models during runtime.
+
+If a technically required function cannot be implemented reliably offline, do not fake it. Clearly identify the limitation and provide the best functional offline implementation without breaking other features.
+
+Before completing:
+
+- Review the complete application.
+- Fix compilation errors.
+- Fix crashes.
+- Fix navigation.
+- Fix broken buttons.
+- Fix database errors.
+- Fix incorrect calculations.
+- Fix data persistence issues.
+- Fix import errors.
+- Fix UI overflow.
+- Fix inconsistent themes.
+- Fix broken offline functionality.
+
+The final result must be a stable, premium-looking, completely offline Android Flashcard + Quiz application with 13 modules, four Card Creation methods, reliable local storage, accurate calculations, modular code, and functional UI.
+
+FINAL INSTRUCTION: Follow the complete specification exactly. Do not add extra features. Do not remove existing features. Do not replace the requested application with a simplified demo. Build the complete application.

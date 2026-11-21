@@ -1,0 +1,72 @@
+name: Build PEE APK
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pee-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: wrapper
+
+      - name: Accept Android SDK licenses
+        run: |
+          if [ -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
+            yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
+          fi
+
+      - name: Prepare debug keystore
+        run: |
+          if [ -f debug.keystore.base64 ]; then
+            tr -d '\r\n' < debug.keystore.base64 | base64 -d > debug.keystore
+          elif [ ! -f debug.keystore ]; then
+            keytool -genkeypair -v \
+              -keystore debug.keystore \
+              -storepass android \
+              -alias androiddebugkey \
+              -keypass android \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
+
+      - name: Build PEE.apk
+        run: gradle :app:createPeeApk --no-daemon --stacktrace
+
+      - name: Upload PEE.apk Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PEE-apk
+          path: app/build/outputs/pee-apk/PEE.apk
+          if-no-files-found: error
+
+      - name: Publish PEE.apk to GitHub Releases (direct Android download)
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view pee-latest >/dev/null 2>&1; then
+            gh release upload pee-latest app/build/outputs/pee-apk/PEE.apk --clobber
+          else
+            gh release create pee-latest app/build/outputs/pee-apk/PEE.apk \
+              --title "PEE APK (MemoDeck)" \
+              --notes "Direct Android download: tap PEE.apk under Assets to download and install."
+          fi

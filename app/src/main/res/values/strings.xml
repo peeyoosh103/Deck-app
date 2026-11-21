@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">MemoDeck</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_decks">Decks</string>
+    <string name="nav_study">Study</string>
+    <string name="nav_quiz">Quiz</string>
+
+    <!-- Common Actions -->
+    <string name="action_create">Create</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_close">Close</string>
+    <string name="action_next">Next</string>
+    <string name="action_previous">Previous</string>
+    <string name="action_back">Back</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_select_all">Select All</string>
+    <string name="action_deselect_all">Deselect All</string>
+
+    <!-- Home -->
+    <string name="home_stats_decks">Total Decks</string>
+    <string name="home_stats_cards">Total Flashcards</string>
+    <string name="home_stats_remembered">Remembered</string>
+    <string name="home_stats_forgotten">Forgotten</string>
+    <string name="home_quick_actions">Quick Actions</string>
+    <string name="home_create_deck">Create Deck</string>
+    <string name="home_start_studying">Start Studying</string>
+    <string name="home_start_quiz">Start Quiz</string>
+    <string name="home_my_decks">My Decks</string>
+    <string name="home_tools">Study Tools</string>
+    <string name="home_weak_cards">Weak Cards</string>
+    <string name="home_search">Search</string>
+    <string name="home_statistics">Statistics</string>
+    <string name="home_settings">Settings</string>
+    <string name="home_empty_decks">No decks yet. Create your first deck to start studying offline.</string>
+
+    <!-- Decks & Cards -->
+    <string name="decks_title">Decks</string>
+    <string name="create_deck_title">Create Deck</string>
+    <string name="edit_deck_title">Edit Deck Name</string>
+    <string name="deck_name_label">Deck Name</string>
+    <string name="deck_name_hint">e.g. Indian Polity, Biology, Vocabulary</string>
+    <string name="deck_name_empty_error">Deck name cannot be empty.</string>
+    <string name="deck_delete_title">Delete Deck?</string>
+    <string name="deck_delete_message">This will permanently delete this deck, all its flashcards, weak card records, and associated progress.</string>
+    <string name="deck_study_this">Study This Deck</string>
+    <string name="deck_quiz_this">Quiz This Deck</string>
+    <string name="deck_add_flashcard">Add Flashcard</string>
+    <string name="deck_create_from_image">Create Cards from Image</string>
+    <string name="deck_import_from_file">Import Flashcards from File</string>
+    <string name="deck_create_from_pdf">Create Cards from PDF</string>
+    <string name="deck_view_cards">View Cards</string>
+
+    <!-- Card Creation -->
+    <string name="card_create_title">Add Flashcard</string>
+    <string name="card_edit_title">Edit Flashcard</string>
+    <string name="card_viewer_title">Flashcard</string>
+    <string name="card_front_label">Front (Question / Term)</string>
+    <string name="card_back_label">Back (Answer / Explanation)</string>
+    <string name="card_front_empty_error">Front text cannot be empty.</string>
+    <string name="card_back_empty_error">Back text cannot be empty.</string>
+    <string name="card_save">Save Card</string>
+    <string name="card_delete_title">Delete Flashcard?</string>
+    <string name="card_delete_message">This flashcard and its learning progress will be permanently deleted.</string>
+
+    <!-- Study -->
+    <string name="study_select_deck">Select Deck to Study</string>
+    <string name="study_tap_to_reveal">Tap card to reveal answer</string>
+    <string name="study_tap_to_flip_front">Tap card to show question</string>
+    <string name="study_remembered">Remembered</string>
+    <string name="study_forgot">Forgot</string>
+    <string name="study_complete_title">Session Complete</string>
+    <string name="study_restart">Restart</string>
+    <string name="study_back_to_deck">Back to Deck</string>
+    <string name="study_back_to_weak">Back to Weak Cards</string>
+
+    <!-- Quiz -->
+    <string name="quiz_setup_title">Quiz Setup</string>
+    <string name="quiz_select_deck">Select Deck</string>
+    <string name="quiz_question_count">Question Count</string>
+    <string name="quiz_start">Start Quiz</string>
+    <string name="quiz_exit_title">Exit Quiz?</string>
+    <string name="quiz_exit_message">Your progress in this quiz will be lost and will not be counted in quiz statistics.</string>
+    <string name="quiz_result_title">Quiz Result</string>
+    <string name="quiz_retry">Retry Quiz</string>
+    <string name="quiz_review_wrong">Review Wrong Answers</string>
+
+    <!-- Weak Cards -->
+    <string name="weak_cards_title">Weak Cards</string>
+    <string name="weak_cards_study">Study Weak Cards</string>
+    <string name="weak_cards_remove">Remove Weak Status</string>
+
+    <!-- Search -->
+    <string name="search_title">Search &amp; Filter</string>
+    <string name="search_hint">Search decks, questions, or answers…</string>
+
+    <!-- Statistics -->
+    <string name="statistics_title">Progress &amp; Statistics</string>
+    <string name="stats_deck_progress">Deck Progress</string>
+    <string name="stats_quiz_performance">Quiz Statistics</string>
+    <string name="stats_daily_study_graph">Daily Study Activity</string>
+    <string name="stats_quiz_history_graph">Quiz Score History</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_study">Study &amp; Quiz Defaults</string>
+    <string name="settings_backup">Local Backup</string>
+    <string name="settings_export_backup">Export Backup</string>
+    <string name="settings_restore_backup">Restore Backup</string>
+    <string name="settings_clear_data">Clear All Data</string>
+    <string name="settings_clear_data_title">Clear All Data?</string>
+    <string name="settings_clear_data_message">All decks, flashcards, learning progress, weak cards, quiz history, study activity, and settings will be permanently deleted. This cannot be undone.</string>
+</resources>

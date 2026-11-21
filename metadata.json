@@ -1,0 +1,6 @@
+{
+  "name": "MemoDeck",
+  "description": "Offline Android flashcard and multiple-choice quiz app with on-device OCR, PDF extraction, JSON/CSV bulk import, weak card tracking, statistics, and local backup.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
